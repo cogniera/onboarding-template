@@ -1,4 +1,4 @@
-#pragma omp simd
+#pragma once
 
 #include <cstddef>
 #include <vector>
@@ -59,7 +59,8 @@ void apply_stencil(const Grid& old_grid, Grid& new_grid){
 
   //have to make every other cell inside the grid use the formula of dissipation 
   for (std::size_t i = 1; i < old_grid.height()-1 ; i++)
-  {
+  { 
+    #pragma omp simd
     for (std::size_t j = 1; j < old_grid.width()-1 ; j++)
     {
       new_grid(i,j) = 0.5 * old_grid(i,j) + 
