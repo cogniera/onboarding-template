@@ -1,4 +1,4 @@
-#pragma once
+#pragma omp simd
 
 #include <cstddef>
 #include <vector>
